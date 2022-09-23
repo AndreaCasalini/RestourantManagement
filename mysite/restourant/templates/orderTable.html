@@ -1,0 +1,65 @@
+{%if not list_appetizer%}
+    <b>ERRORE NEL CARICAMENTO DEI PARAMETRI DEL MENU<b></b>
+{%endif%}
+{%if update%}
+    <p><b>ORDINE EFFETTUATO PER IL TAVOLO NUMERO {{table_id}}</b></p>
+{%endif%}
+{%if error%}
+    <p><b>IL TAVOLO CON ID {{table_id}} NON È È ANCORA STATTO INSERITO IN DB OPPURE PIATTO NON IN MENU</b></p>
+{%endif%}
+    
+
+
+<form action="/restourant/order/orderTable/" method="POST">
+    {% csrf_token %}
+    <label for="table_id">ID TAVOLO : </label>
+    <input type="int" name="table_id" id="table_id" size="3" required/> 
+
+    PIATTO:
+    <select name="piatto">
+        <optgroup label="antipasti">
+        {%for i in list_appetizer%}
+            <option>{{i.dish_name}}</option>
+        {%endfor%}
+        </optgroup>
+        <optgroup label="primi">
+            {%for i in list_first%}
+                <option>{{i.dish_name}}</option>
+            {%endfor%}
+        </optgroup>
+        <optgroup label="secondi">
+            {%for i in list_second%}
+                <option>{{i.dish_name}}</option>
+            {%endfor%}
+        </optgroup>
+        <optgroup label="dessert">
+            {%for i in list_dessert%}
+                <option>{{i.dish_name}}</option>
+            {%endfor%}
+        </optgroup>             
+    </select>
+    QUANTITÀ:
+    <select name="quantity">
+        <option>0</option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+        <option>6</option>
+        <option>7</option>
+        <option>8</option>
+        <option>9</option>
+    </select>
+
+
+
+    
+    <input type="submit" value="ordina"><br>
+
+</form>
+<a href="/restourant/order">Passa alla pagina degli ordini</a><br>
+
+
+
+

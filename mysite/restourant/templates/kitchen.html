@@ -1,0 +1,36 @@
+<p><b>PAGINA GESTIONE CUCINA</b></p>
+{%if error%}
+    <br>NON esiste l'ordine di questo piatto per questo tavolo.<br><br><br>
+{%endif%}
+{%if error1%}
+    <br>Ordine già fatto.<br><br><br>
+{%endif%}
+<form action="/restourant/kitchen/" method="post">
+    {% csrf_token %}
+    
+    <label for="table_id"><b>ID tavolo : </b></label>
+    <select name="table_id">
+        {%for i in list_table%}
+            <option>{{i.table_id}}</option> 
+        {%endfor%}
+    </select><br>
+    <b>Nome del piatto :</b> 
+    <select name="dish_name">
+        {%for i in list_order%}
+            {%if i.dish.dish_name != "Coperto"%}
+                <option>{{i.dish.dish_name}}</option> 
+        {%endif%}
+        {%endfor%}
+    </select>
+    <input type="submit" value="done"><br>
+
+    <br><br><br>
+    ELENCO ORDINI
+    {%for i in list_order%}
+        {%if i.dish.dish_name != "Coperto"%}
+            {{i.table.table_id}} -- {{i.dish.dish_name}} <b>{{i.done}}</b> <br>
+        {%endif%}
+    {%endfor%}
+</form>
+<br>
+<a href="/restourant">Passa alla pagia indice</a><br>

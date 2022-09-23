@@ -1,0 +1,20 @@
+{%if error%}
+    <b>IMPOSSINILE GENERARE SCONTRINO: Tavolo non in DB </b><br>
+{%endif%}
+<p><b>Richiesta ricevuta: </b></p>
+<form action="/restourant/receipt/" method="post">
+    {% csrf_token %}
+    
+    <label for="table_id"><b>ID tavolo : </b></label>
+    <input type="int" name="table_id" id="table_id" required/> <br>
+    <input type="submit" value="scontrino"><br>
+</form>
+{%if price and order%}  
+    <b>Elenco ordini: </b><br>
+    {%for i in order%}
+    <li>ORDINE : {{i.dish.dish_name}} ---- PRICE : {{i.dish.dish_price}}€</li><br>
+    {%endfor%}
+    <b>TOTALE: {{price}}€</b>
+{%endif%}
+<br>
+<a href="/restourant">Torna alla pagina iniziale</a>

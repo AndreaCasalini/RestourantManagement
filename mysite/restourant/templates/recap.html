@@ -1,0 +1,19 @@
+{%if not recap%}
+    <p><b>NESSUN PAGAMENTO EFFETTUATO</b></p>
+{%endif%}
+<p><b>ELENCO PAGAMENTI</b></p>
+{%for k,j in diz_day.items%}
+    <b>{{k}}</b><br>
+    {%for i in recap%}
+        {%if i.data == k%}
+            <li>{{i.data}} ---- {{i.price}}€</li>
+        {%endif%}
+    {%endfor%}
+    <b>Guadagno totale pr il giorno {{k}} è : {{j}}€</b>
+<br><br>
+{%endfor%}
+
+<br>
+<b>totale guadagnato : {{total}} €</b><br><br><br>
+
+<a href="/restourant">Passa alla pagia indice</a><br>

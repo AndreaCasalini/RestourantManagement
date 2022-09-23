@@ -1,0 +1,35 @@
+{% if menu %}
+    
+    <ul><p1>ANTIPASTI</p1></ul>
+    {% for dish in menu %}
+        {% if dish.dish_category == 'appetizer' %}
+            <li> {{dish.dish_name}} </li>
+        {%endif%}
+    {% endfor %}
+
+    <ul><p1>PRIMI</p1></ul>
+    {% for dish in menu %}
+        {% if dish.dish_category == 'first' %}
+            <li> {{dish.dish_name}} </li>
+        {%endif%}
+    {% endfor %}
+    
+
+    <ul><p1>SECONDI</p1></ul>
+    {% for dish in menu %}
+        {% if dish.dish_category == 'second' %}
+            <li> {{dish.dish_name}} </li>
+        {%endif%}
+    {% endfor %}
+
+    <ul><p1>DOLCI</p1></ul>
+    {% for dish in menu %}
+        {% if dish.dish_category == 'dessert' %}
+            <li> {{dish.dish_name}} </li>
+        {%endif%}
+    {% endfor %}
+{% else %}
+    <p>No dish are available.</p>
+{% endif %}
+<br><br>
+<a href="/restourant">Torna alla pagina iniziale</a>

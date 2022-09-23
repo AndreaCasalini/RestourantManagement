@@ -1,0 +1,22 @@
+{%if modify%}
+    TAVOLO MODIFICATO
+{%endif%}
+{%if error%}
+    IMPOSSIBILE MODIFICARE TAVOLO NON ANCORA IN DB
+{%endif%}
+<p><b>Modifica tavolo esistente: </b></p>
+<form action="/restourant/modifyTable/" method="post">
+    {% csrf_token %}
+    
+    <label for="table_id"><b>ID tavolo vecchio: </b></label>
+    <input type="int" name="table_id_old" id="table_id_old" required/> <br>
+    <label for="table_id"><b>ID tavolo nuovo: </b></label>
+    <input type="int" name="table_id_new" id="table_id_new" required/> <br>
+    <label for="table_people"><b>Numero coperti nuovo: </b></label>
+    <input type="int" name="table_people_new" id="table_people_new" required/> <br>
+
+    <input type="submit" value="modifica tavolo"><br>
+</form>
+<br>
+
+<a href="/restourant">Torna alla pagina iniziale</a>

@@ -1,0 +1,8 @@
+<p><b>ELENCO ORDINI</b></p> 
+{%for i in order%}
+    NUMERO TAVOLO : [{{i.table.table_id}}]   ORDINE : [{{i.dish.dish_name}}]  <br>
+{%endfor%}
+<br>
+
+<a href="/restourant/order/orderTable">Per effettuare nuovi ordini</a><br>
+<a href="/restourant">Torna alla pagina iniziale</a>

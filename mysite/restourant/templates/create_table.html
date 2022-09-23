@@ -1,0 +1,23 @@
+{% if error %}
+    <p>ERRORE INPUT NON VALIDI</p>
+{%endif%}
+{% if error1 %}
+    <p>DB SE SI INTENDE MODIFICARLO ANDARE NELLA SENZIONE DI MODIFICA TAVOLO </p>
+{%endif%}
+{% if error2 %}
+    <p>L'ID DEL TAVOLO E IL NUMERO DI COMPONENTI DEL TAVOLO DEVE ESSERE UN NUMERO INTERO </p>
+{%endif%}
+<p><b>Inserisci nuovo tavolo: </b></p>
+<form action="/restourant/table/" method="post">
+    {% csrf_token %}
+    
+    <label for="table_id"><b>ID tavolo: </b></label>
+    <input type="int" name="table_id" id="table_id" required/> <br>
+    <label for="table_people"><b>Numero coperti : </b></label>
+    <input type="int" name="table_people" id="table_people" required/> <br>
+
+    <input type="submit" value="inizio l'ordine"><br>
+</form>
+<br>
+<a href="/restourant/modifyTable">Modifica un tavolo</a><br>
+<a href="/restourant">Torna alla pagina iniziale</a>
