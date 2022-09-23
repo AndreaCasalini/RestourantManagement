@@ -181,7 +181,8 @@ def recap(request):
     print(list_receive)
     return HttpResponse(template.render({'recap':list_receive,'total':total,'diz_day':diz_day},request))
 
-def kitchen(request):
+def kitchen(request):  
+    
     template = loader.get_template('kitchen.html')
     list_order=Order.objects.all()
     list_dish=Dish.objects.all()
